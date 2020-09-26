@@ -1,0 +1,63 @@
+include ./layout.pug
+.container
+  h2 Register Form 
+  - var action = '/crud/add';
+  - var btn = 'Submit';
+  #data
+   if data
+    - var btn = 'Update';
+    -var action = '/crud/update';
+  
+  if error
+    .alert.alert-danger(role='alert')
+      #{error}
+
+
+  form.form-horizontal(action=action method='post')
+    .form-group
+      label.control-label.col-sm-2(for='name') Name:
+      .col-sm-10
+        input#name.form-control(type='text', placeholder='Enter Name', name='name', value= (data && data.name ? data.name : '') )
+    .form-group
+      label.control-label.col-sm-2(for='Phone Number') Phone Number:
+      .col-sm-10
+        input#phone.form-control(type='text', placeholder='Enter Phone Number', name='phone', value = (data && data.phone ? data.phone : '') )
+    .form-group
+      label.control-label.col-sm-2(for='email') Email:
+      .col-sm-10
+        input#email.form-control(type='text', placeholder='Enter email', name='email', value = (data && data.email ? data.email : '') )
+    .form-group
+      label.control-label.col-sm-2(for='pwd') Password:
+      .col-sm-10
+        input#pwd.form-control(type='password', placeholder='Enter password', name='password', value = (data && data.password ? data.password : '') )  
+    if data
+       input.form-control(type='hidden', name='userId', value = (data && data._id ? data._id : '') )
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        input.btn.btn-primary(type='submit', value=btn)
+  //- h1 Users Details      
+  //- table.table
+  //-   thead
+  //-     tr
+  //-       th Name
+  //-       th Phone
+  //-       th Email
+  //-       th Edit
+  //-       th Delete
+  //-   tbody
+  //-     tr
+  //-       td Default
+  //-       td 989898786
+  //-       td def@somemail.com
+  //-       td 
+  //-           button.btn.btn-primary Edit
+  //-       td 
+  //-           button.btn.btn-danger Delete
+  //-     tr
+  //-       td Default
+  //-       td 989898786
+  //-       td def@somemail.com
+  //-       td 
+  //-           button.btn.btn-primary Edit
+  //-       td 
+  //-           button.btn.btn-danger Delete

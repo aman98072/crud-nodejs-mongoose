@@ -1,0 +1,24 @@
+include ./layout.pug
+.container
+  h1 Users Details      
+  table.table
+    thead
+      tr
+        th Name
+        th Phone
+        th Email
+        th Edit
+        th Delete
+    tbody
+      each val, index in data
+        tr
+         td #{val.name}
+         td #{val.phone}
+         td #{val.email}
+         td 
+            button.btn.btn-primary 
+             a(href=`${process.env.CRUD_BASE_URL+"edit/"+val._id}`, style="color:white;") Edit
+         td 
+            button.btn.btn-danger 
+             a(href=`${process.env.CRUD_BASE_URL+"delete/"+val._id}`, style="color:white;") Delete
+            
